@@ -1,0 +1,225 @@
+:root {
+  --page: #f1f1f1;
+  --card: #ffffff;
+  --ink: #213d57;
+  --muted: #617080;
+  --border: #3b5066;
+  --soft-border: #c8d0d7;
+  --purple: #8d42b4;
+  --red: #ef5146;
+  --gray-line: #dfe2e6;
+  --font: Arial, Helvetica, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font);
+}
+button { font: inherit; }
+.grain { display: none; }
+
+.app-shell {
+  width: min(100%, 600px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 17px 20px 30px;
+  background: var(--card);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 0 8px rgba(30, 43, 55, .16);
+}
+
+.topbar {
+  min-height: 38px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  border: 0;
+}
+.music-button {
+  border: 0;
+  border-radius: 4px;
+  padding: 9px 14px;
+  color: #fff;
+  background: var(--purple);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.music-button:hover, .music-button[aria-pressed="true"] { background: #73359a; }
+.topbar-actions { display: flex; align-items: center; gap: 8px; }
+.progress-badge {
+  padding: 10px 14px;
+  color: #203b55;
+  background: #f4f7f8;
+  border: 1px solid #bac4cb;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.progress-badge span { color: var(--red); }
+.icon-button {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--soft-border);
+  border-radius: 50%;
+  color: var(--muted);
+  background: #fff;
+  cursor: pointer;
+}
+.icon-button:hover { color: var(--ink); border-color: var(--border); }
+
+.intro {
+  padding: 16px 0 12px;
+  text-align: center;
+}
+.intro h1 {
+  margin: 0 0 6px;
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+.intro-copy {
+  margin: 0;
+  color: #56616b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.red-copy { color: var(--red); font-weight: 700; }
+
+.game-grid { display: block; padding: 0; }
+.side-panel { display: none; }
+.play-column { width: 100%; max-width: 500px; margin: 0 auto; }
+.game-card {
+  overflow: hidden;
+  background: #fff;
+  border: 0;
+  box-shadow: none;
+}
+.game-card-head { display: none; }
+.board-wrap {
+  aspect-ratio: 1 / 1;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  border: 3px solid var(--border);
+  border-radius: 8px;
+}
+.board-wrap::after { display: none; }
+.board-wrap svg { display: block; width: 100%; height: 100%; }
+.board-grid { fill: none; }
+.target-line { stroke: var(--gray-line); stroke-width: .8; stroke-linecap: round; opacity: 1; }
+.target-line.used { stroke: #c9cdd1; opacity: .65; }
+.progress-line { stroke: #6ca7bd; stroke-width: 1.55; stroke-linecap: round; filter: none; animation: draw .25s ease both; }
+.node-dot { fill: #9eaeb3; transition: fill .18s ease, transform .18s ease; transform-box: fill-box; transform-origin: center; }
+.node-dot.start { fill: var(--red); filter: none; }
+.node-dot.reached { fill: #5c9db3; transform: scale(1.55); }
+.node-ripple { fill: none; stroke: #5c9db3; stroke-width: .8; opacity: .9; pointer-events: none; animation: ripple .52s ease-out forwards; }
+.drag-preview { stroke: #6ca7bd; stroke-width: 1.1; stroke-dasharray: 2.5 2; stroke-linecap: round; opacity: .58; pointer-events: none; }
+.board-hint {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  left: auto;
+  color: #7b8791;
+  font-size: 10px;
+  letter-spacing: 0;
+  pointer-events: none;
+}
+.drag-icon { color: var(--red); font-size: 16px; margin-right: 4px; }
+.board-hint.hidden { opacity: 0; }
+.game-card-foot {
+  height: auto;
+  padding: 10px 2px 0;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.game-card-foot p { margin: 0; color: var(--muted); font-size: 12px; }
+.foot-actions { display: flex; align-items: center; gap: 12px; }
+.level-tester { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 10px; font-weight: 700; white-space: nowrap; }
+.level-tester select { max-width: 150px; padding: 5px 22px 5px 6px; color: var(--ink); background: #f4f7f8; border: 1px solid var(--soft-border); border-radius: 4px; font-size: 10px; cursor: pointer; }
+.reset-button { border: 0; padding: 4px 0; color: var(--muted); background: transparent; cursor: pointer; font-size: 11px; }
+.reset-button:hover { color: var(--red); }
+.reset-button span { font-size: 16px; margin-right: 3px; vertical-align: -1px; }
+.mobile-mission { display: none; }
+.error-text { color: var(--red) !important; }
+.footer { display: none; }
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(32, 45, 58, .35);
+}
+.modal-backdrop[hidden] { display: none; }
+.modal {
+  position: relative;
+  width: min(100%, 390px);
+  padding: 28px 28px 30px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--soft-border);
+  border-radius: 8px;
+  box-shadow: 0 12px 35px rgba(32, 45, 58, .18);
+  animation: modalIn .25s ease;
+}
+.modal-close { position: absolute; top: 9px; right: 12px; border: 0; background: transparent; color: var(--muted); font-size: 22px; cursor: pointer; }
+.modal-kicker { color: var(--purple); font-size: 11px; font-weight: 700; }
+.clue-art { width: 120px; height: 120px; margin: 20px auto 16px; background: #fafafa; border: 1px solid var(--soft-border); }
+.clue-art svg { width: 100%; height: 100%; }
+.modal h2 { margin: 0 0 10px; color: var(--ink); font-size: 23px; }
+.modal p { max-width: 290px; margin: 0 auto; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.clue-caption { display: flex; align-items: center; gap: 8px; margin: 20px 0; color: var(--muted); font-size: 10px; font-weight: 700; }
+.clue-caption span { height: 1px; flex: 1; background: var(--soft-border); }
+.primary-button { width: 100%; padding: 12px 14px; border: 0; border-radius: 4px; color: #fff; background: var(--purple); font-size: 12px; font-weight: 700; cursor: pointer; }
+.primary-button:hover { background: #73359a; transform: none; }
+.primary-button span { margin-left: 7px; font-size: 16px; vertical-align: -1px; }
+.help-icon { width: 58px; height: 58px; margin: 20px auto; border: 1px solid var(--purple); border-radius: 50%; color: var(--purple); display: grid; place-items: center; font-size: 25px; }
+.help-modal p { max-width: 300px; }
+.help-modal .primary-button { margin-top: 22px; }
+.final-modal { overflow: hidden; }
+.final-rays { display: none; }
+.final-seal { width: 90px; height: 90px; margin: 22px auto; padding-top: 29px; border: 1px solid var(--red); border-radius: 50%; color: var(--red); display: flex; align-items: baseline; justify-content: center; gap: 2px; box-shadow: none; }
+.final-seal span { font-size: 36px; }
+.final-seal small { color: var(--muted); font-size: 9px; }
+.final-modal h2 { font-size: 25px; }
+.final-secret { min-height: 40px; margin: 20px auto; padding: 12px 8px; color: #a65b11; border: 1px solid #edcc9d; font-size: 11px; letter-spacing: .05em; }
+.final-modal .primary-button { color: #fff; background: var(--purple); }
+
+@keyframes draw { from { stroke-dasharray: 100; stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+@keyframes ripple { from { r: 2px; opacity: .9; } to { r: 6px; opacity: 0; } }
+@keyframes modalIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 520px) {
+  .app-shell { padding: 14px 14px 24px; }
+  .topbar { align-items: center; }
+  .topbar-actions { gap: 5px; }
+  .progress-badge { padding: 9px 10px; font-size: 12px; }
+  .icon-button { display: none; }
+  .intro { padding-top: 17px; }
+  .intro h1 { font-size: 22px; }
+  .intro-copy { font-size: 12px; }
+  .board-wrap { border-width: 2px; }
+  .game-card-foot { align-items: flex-start; flex-direction: column; }
+  .foot-actions { width: 100%; justify-content: space-between; }
+}
+
+@media (max-width: 390px) {
+  .music-button { padding: 8px 10px; font-size: 12px; }
+  .progress-badge { font-size: 11px; }
+}

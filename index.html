@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#11110f" />
+    <meta name="description" content="Mê Cung Một Nét — hoàn thành 10 hình bằng một nét duy nhất." />
+    <title>Mê Cung Một Nét</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <main class="app-shell">
+      <header class="topbar">
+        <button class="music-button" id="musicButton" type="button" aria-pressed="false">♫ Bật Nhạc</button>
+        <div class="topbar-actions">
+          <div class="progress-badge">Màn: <span id="topLevel">1</span>/10 Mở Khóa Manh Mối</div>
+          <button class="icon-button" id="howToPlayButton" type="button" aria-label="Cách chơi" title="Cách chơi">?</button>
+        </div>
+      </header>
+
+      <section class="intro" id="game">
+        <h1>Thử Thách Giải Mã</h1>
+        <p class="intro-copy">Bắt đầu từ điểm <span class="red-copy">Màu Đỏ.</span> Hoàn thành hình bằng 1 nét để lấy manh mối!</p>
+      </section>
+
+      <section class="game-grid" aria-label="Khu vực chơi">
+        <aside class="side-panel left-panel">
+          <div class="panel-label">NHIỆM VỤ</div>
+          <div class="mission-number" id="missionNumber">01</div>
+          <p class="mission-title" id="missionTitle">Khởi đầu tĩnh lặng</p>
+          <div class="divider"></div>
+          <div class="stat-row"><span>ĐƯỜNG NÉT</span><strong id="edgeCount">0 / 0</strong></div>
+          <div class="stat-row"><span>THỜI GIAN</span><strong id="timer">00:00</strong></div>
+          <div class="divider"></div>
+          <p class="side-note">Mỗi cạnh chỉ được đi qua một lần. Điểm đỏ luôn là nơi bắt đầu.</p>
+        </aside>
+
+        <div class="play-column">
+          <div class="game-card">
+            <div class="game-card-head">
+              <div class="level-chip">MÀN <strong id="levelChip">01</strong> <span>/ 10</span></div>
+              <div class="live-status" id="liveStatus"><span></span> SẴN SÀNG</div>
+            </div>
+            <div class="board-wrap" id="boardWrap">
+              <svg id="board" viewBox="0 0 100 100" role="img" aria-label="Hình cần hoàn thành bằng một nét" touch-action="none">
+                <defs>
+                  <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
+                    <feGaussianBlur stdDeviation="1.5" result="blur" />
+                    <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <pattern id="boardGrid" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,.035)" stroke-width=".3" />
+                  </pattern>
+                </defs>
+                <rect class="board-grid" x="0" y="0" width="100" height="100" rx="2" />
+                <g id="targetLayer"></g>
+                <g id="progressLayer"></g>
+                <g id="nodeLayer"></g>
+              </svg>
+              <div class="board-hint" id="boardHint"><span class="drag-icon">↗</span> KÉO TỪ ĐIỂM ĐỎ</div>
+            </div>
+            <div class="game-card-foot">
+              <p id="instruction">Nối liền từng điểm mà không nhấc tay.</p>
+              <div class="foot-actions">
+                <label class="level-tester" for="levelSelect"><span>TEST MÀN</span><select id="levelSelect" aria-label="Chọn màn để kiểm tra"></select></label>
+                <button class="reset-button" id="resetButton" type="button"><span>↻</span> XÓA NÉT</button>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-mission"><span id="mobileMissionTitle">Khởi đầu tĩnh lặng</span><span id="mobileEdgeCount">0 / 0 nét</span></div>
+        </div>
+
+        <aside class="side-panel right-panel">
+          <div class="panel-label">BỘ SƯU TẬP MANH MỐI</div>
+          <div class="clue-stack" id="clueStack" aria-label="Các manh mối đã mở khóa"></div>
+          <div class="locked-note"><span class="lock-icon">⌑</span><span>Hoàn thành đủ 10 màn để mở mảnh ghép cuối.</span></div>
+        </aside>
+      </section>
+
+      <footer class="footer"><span>© 2026 MÊ CUNG MỘT NÉT</span><span class="footer-line"></span><span>HÃY TIN VÀO NÉT ĐẦU TIÊN</span></footer>
+    </main>
+
+    <div class="modal-backdrop" id="modalBackdrop" hidden>
+      <section class="modal" id="resultModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" id="modalClose" type="button" aria-label="Đóng">×</button>
+        <div class="modal-kicker" id="modalKicker">MỞ KHÓA MANH MỐI 01</div>
+        <div class="clue-art" id="clueArt"></div>
+        <h2 id="modalTitle">Một nét đã hoàn thành.</h2>
+        <p id="modalText">Bạn vừa mở khóa một mảnh ghép.</p>
+        <div class="clue-caption"><span></span><strong id="clueCaption">MẢNH GHÉP 01</strong><span></span></div>
+        <button class="primary-button" id="nextButton" type="button">MÀN TIẾP THEO <span>→</span></button>
+      </section>
+    </div>
+
+    <div class="modal-backdrop" id="helpBackdrop" hidden>
+      <section class="modal help-modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+        <button class="modal-close" id="helpClose" type="button" aria-label="Đóng">×</button>
+        <div class="modal-kicker">HƯỚNG DẪN NHANH</div>
+        <div class="help-icon">↗</div>
+        <h2 id="helpTitle">Một nét, không quay lại.</h2>
+        <p>Chạm vào điểm đỏ rồi kéo qua các điểm kề nhau. Mỗi đường chỉ được đi qua đúng một lần. Nếu đi sai, hãy xóa nét và thử lại.</p>
+        <button class="primary-button" id="helpStartButton" type="button">ĐÃ HIỂU <span>→</span></button>
+      </section>
+    </div>
+
+    <div class="modal-backdrop" id="finalBackdrop" hidden>
+      <section class="modal final-modal" role="dialog" aria-modal="true" aria-labelledby="finalTitle">
+        <div class="final-rays" aria-hidden="true"></div>
+        <div class="modal-kicker">MẢNH GHÉP CUỐI CÙNG</div>
+        <div class="final-seal" aria-hidden="true"><span>10</span><small>/ 10</small></div>
+        <h2 id="finalTitle">Cánh cửa đã thức giấc.</h2>
+        <p id="finalText"></p>
+        <div class="final-secret" id="finalSecret" aria-live="polite"></div>
+        <button class="primary-button" id="playAgainButton" type="button">CHƠI LẠI TỪ ĐẦU <span>↻</span></button>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
