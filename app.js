@@ -1,16 +1,16 @@
 const $ = (selector) => document.querySelector(selector);
 
 const legacyLevels = [
-  { title: 'Khởi đầu tĩnh lặng', nodes: [[18, 50], [50, 18], [82, 50], [50, 82]], edges: [[0,1],[1,2],[2,3],[3,0],[0,2]], clue: 'DẤU SAO', clueText: 'Có một phương hướng đang thức giấc.' },
-  { title: 'Cánh cửa nghiêng', nodes: [[18, 23], [50, 18], [82, 30], [71, 72], [30, 82], [20, 54]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0],[1,4],[0,4]], clue: 'LA BÀN', clueText: 'Phía bắc không nằm ở trên cùng.' },
-  { title: 'Con mắt của đêm', nodes: [[16, 50], [34, 25], [66, 25], [84, 50], [66, 75], [34, 75], [50, 50]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0],[0,6],[1,6],[3,6],[4,6],[0,3],[1,4]], clue: 'CON MẮT', clueText: 'Thứ đang nhìn bạn không ở ngoài hình vẽ.' },
-  { title: 'Mạch ngầm', nodes: [[17, 20], [50, 20], [83, 20], [83, 50], [83, 80], [50, 80], [17, 80], [17, 50], [50, 50]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0],[1,8],[3,8],[5,8],[7,8],[1,5],[3,7]], clue: 'MẠCH NGẦM', clueText: 'Mọi vòng tròn đều dẫn về tâm.' },
-  { title: 'Mặt nạ kép', nodes: [[18, 30], [35, 18], [50, 30], [65, 18], [82, 30], [70, 50], [82, 70], [65, 82], [50, 70], [35, 82], [18, 70], [30, 50]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,11],[11,0],[2,4],[4,6],[6,8],[8,10],[10,0],[2,8]], clue: 'MẶT NẠ', clueText: 'Một khuôn mặt có thể có hai hướng.' },
-  { title: 'Nhịp cầu vắng', nodes: [[16, 32], [33, 20], [50, 32], [67, 20], [84, 32], [72, 58], [84, 78], [50, 68], [16, 78], [28, 58]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,0],[0,2],[2,4],[4,7],[7,0]], clue: 'NHỊP CẦU', clueText: 'Khoảng trống cũng là một phần của lối đi.' },
-  { title: 'Khóa thời gian', nodes: [[50, 16], [75, 28], [82, 55], [66, 81], [34, 81], [18, 55], [25, 28], [50, 50]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,0],[0,7],[7,2],[7,4],[7,6],[0,4],[2,6]], clue: 'ĐỒNG HỒ', clueText: 'Kim chỉ về nơi bắt đầu, nhưng không quay lại.' },
-  { title: 'Tín hiệu xa', nodes: [[15, 50], [28, 28], [50, 15], [72, 28], [85, 50], [72, 72], [50, 85], [28, 72], [50, 50]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0],[0,8],[2,8],[4,8],[6,8],[0,4],[2,6]], clue: 'TÍN HIỆU', clueText: 'Bốn phía gửi cùng một thông điệp.' },
-  { title: 'Vết nứt đỏ', nodes: [[16, 22], [50, 16], [84, 22], [72, 50], [84, 78], [50, 84], [16, 78], [28, 50], [50, 50], [50, 30], [50, 70]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0],[0,9],[9,8],[8,10],[10,4],[0,10],[10,9],[9,4],[4,8],[8,0]], clue: ' VẾT NỨT', clueText: 'Đường thẳng nhất đôi khi cần bị bẻ cong.' },
-  { title: 'Điểm hội tụ', nodes: [[15, 15], [50, 15], [85, 15], [85, 50], [85, 85], [50, 85], [15, 85], [15, 50], [30, 30], [70, 30], [70, 70], [30, 70]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0],[8,9],[9,10],[10,11],[11,8],[0,8],[2,9],[4,10],[6,11],[0,4],[2,6],[8,10],[9,11]], clue: 'HỘI TỤ', clueText: 'Tất cả những gì đã thấy đang chỉ về một nơi.' }
+  { title: 'Khởi đầu tĩnh lặng', nodes: [[18, 50], [50, 18], [82, 50], [50, 82]], edges: [[0,1],[1,2],[2,3],[3,0],[0,2]], clue: 'DẤU SAO' },
+  { title: 'Cánh cửa nghiêng', nodes: [[18, 23], [50, 18], [82, 30], [71, 72], [30, 82], [20, 54]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0],[1,4],[0,4]], clue: 'LA BÀN'},
+  { title: 'Con mắt của đêm', nodes: [[16, 50], [34, 25], [66, 25], [84, 50], [66, 75], [34, 75], [50, 50]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,0],[0,6],[1,6],[3,6],[4,6],[0,3],[1,4]], clue: 'CON MẮT'},
+  { title: 'Mạch ngầm', nodes: [[17, 20], [50, 20], [83, 20], [83, 50], [83, 80], [50, 80], [17, 80], [17, 50], [50, 50]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0],[1,8],[3,8],[5,8],[7,8],[1,5],[3,7]], clue: 'MẠCH NGẦM'},
+  { title: 'Mặt nạ kép', nodes: [[18, 30], [35, 18], [50, 30], [65, 18], [82, 30], [70, 50], [82, 70], [65, 82], [50, 70], [35, 82], [18, 70], [30, 50]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,11],[11,0],[2,4],[4,6],[6,8],[8,10],[10,0],[2,8]], clue: 'MẶT NẠ'},
+  { title: 'Nhịp cầu vắng', nodes: [[16, 32], [33, 20], [50, 32], [67, 20], [84, 32], [72, 58], [84, 78], [50, 68], [16, 78], [28, 58]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,9],[9,0],[0,2],[2,4],[4,7],[7,0]], clue: 'NHỊP CẦU' },
+  { title: 'Khóa thời gian', nodes: [[50, 16], [75, 28], [82, 55], [66, 81], [34, 81], [18, 55], [25, 28], [50, 50]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,0],[0,7],[7,2],[7,4],[7,6],[0,4],[2,6]], clue: 'ĐỒNG HỒ'},
+  { title: 'Tín hiệu xa', nodes: [[15, 50], [28, 28], [50, 15], [72, 28], [85, 50], [72, 72], [50, 85], [28, 72], [50, 50]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0],[0,8],[2,8],[4,8],[6,8],[0,4],[2,6]], clue: 'TÍN HIỆU'},
+  { title: 'Vết nứt đỏ', nodes: [[16, 22], [50, 16], [84, 22], [72, 50], [84, 78], [50, 84], [16, 78], [28, 50], [50, 50], [50, 30], [50, 70]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0],[0,9],[9,8],[8,10],[10,4],[0,10],[10,9],[9,4],[4,8],[8,0]], clue: ' VẾT NỨT'},
+  { title: 'Điểm hội tụ', nodes: [[15, 15], [50, 15], [85, 15], [85, 50], [85, 85], [50, 85], [15, 85], [15, 50], [30, 30], [70, 30], [70, 70], [30, 70]], edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0],[8,9],[9,10],[10,11],[11,8],[0,8],[2,9],[4,10],[6,11],[0,4],[2,6],[8,10],[9,11]], clue: 'HỘI TỤ' }
 ];
 
 function normalizeNodes(rawNodes) {
@@ -28,61 +28,61 @@ const rawLevels = [
     title: 'Tam giác',
     nodes: [{id:0, x:350, y:200}, {id:1, x:200, y:500}, {id:2, x:500, y:500}],
     edges: [[0,1], [1,2], [2,0]], startNodeId: 0,
-    clue: 'MẢNH GHÉP 01', clueText: 'Một hình tam giác đang chờ được mở khóa.', image: 'doc.png'
+    clue: 'MẢNH GHÉP 01', clueText: '3x3'
   },
   {
     title: 'Vuông chéo',
     nodes: [{id:0, x:150, y:50}, {id:1, x:50, y:100}, {id:2, x:100, y:100}, {id:3, x:200, y:100},{id:4, x:250, y:100},{id:5, x:100, y:150},{id:6, x:200, y:150},{id:7, x:50, y:200},{id:8, x:100, y:200},{id:9, x:200, y:200},{id:10, x:250, y:200},{id:11, x:150, y:250}],
     edges: [[0,2], [0,3],[1,2],[1,5],[2,3],[2,5],[3,4],[3,6],[4,6],[5,8],[5,7],[6,9],[6,10],[7,8],[8,9],[8,11],[9,10],[9,11]], startNodeId: 0,
-    clue: 'MẢNH GHÉP 02', clueText: 'Bạn hãy kiểm tra phía dưới gầm bàn làm việc.'
+    clue: 'MẢNH GHÉP 02', clueText: '5x5'
   },
   {
     title: 'Ngôi nhà',
     nodes: [{id:0, x:100, y:300}, {id:1, x:300, y:300}, {id:2, x:100, y:150}, {id:3, x:300, y:150}, {id:4, x:200, y:50}],
     edges: [[0,1], [0,2], [0,3], [1,2], [1,3], [2,3], [2,4], [3,4]], startNodeId: 0,
-    clue: 'MẢNH GHÉP 03', clueText: "Mảnh ghép thứ 3 là chữ 'K'."
+    clue: 'MẢNH GHÉP 03', clueText: "5x3"
   },
   {
     title: 'Kim cương',
     nodes: [{id:0, x:200, y:50}, {id:1, x:100, y:200}, {id:2, x:300, y:200}, {id:3, x:200, y:350}],
     edges: [[0,1], [0,2], [1,2], [1,3], [2,3]], startNodeId: 1,
-    clue: 'MẢNH GHÉP 04', clueText: 'Có một chiếc chìa khóa giấu trong cuốn sách dày nhất.'
+    clue: 'MẢNH GHÉP 04', clueText: '5x3'
   },
   {
     title: 'Đồng hồ cát',
     nodes: [{id:0, x:100, y:100}, {id:1, x:300, y:100}, {id:2, x:200, y:200}, {id:3, x:100, y:300}, {id:4, x:300, y:300}],
     edges: [[0,1], [0,2], [1,2], [2,3], [2,4], [3,4], [0,3]], startNodeId: 3,
-    clue: 'MẢNH GHÉP 05', clueText: 'Nhớ lấy tọa độ: 10 Vĩ độ Bắc...'
+    clue: 'MẢNH GHÉP 05', clueText: '3x5'
   },
   {
     title: 'Mạng nhện',
     nodes: [{id:0, x:200, y:200}, {id:1, x:200, y:120}, {id:2, x:280, y:200}, {id:3, x:200, y:280}, {id:4, x:120, y:200}, {id:5, x:200, y:50}, {id:6, x:350, y:200}, {id:7, x:200, y:350}, {id:8, x:50, y:200}],
     edges: [[1,2], [2,3], [3,4], [4,1], [5,8], [6,7], [7,8], [5,1], [1,0], [0,3], [3,7], [8,4], [4,0], [0,2], [2,6]], startNodeId: 7,
-    clue: 'MẢNH GHÉP 06', clueText: 'Tên của kẻ phản bội có 5 chữ cái.'
+    clue: 'MẢNH GHÉP 06', clueText: '5x5'
   },
   {
     title: 'Bẫy kim cương',
     nodes: [{id:0, x:100, y:200}, {id:1, x:200, y:200}, {id:2, x:300, y:200}, {id:3, x:150, y:120}, {id:4, x:250, y:120}, {id:5, x:150, y:280}, {id:6, x:250, y:280}, {id:7, x:200, y:50}],
     edges: [[0,1], [1,2], [0,3], [3,1], [1,5], [5,0], [1,4], [4,2], [2,6], [6,1], [3,7], [7,4], [3,4]], startNodeId: 0,
-    clue: 'MẢNH GHÉP 07', clueText: 'Nhật ký trang 42: Góc khuất sau giá sách.'
+    clue: 'MẢNH GHÉP 07', clueText: '4x5'
   },
   {
     title: 'Lục giác mê cung',
     nodes: [{id:0, x:200, y:200}, {id:1, x:200, y:120}, {id:2, x:270, y:160}, {id:3, x:270, y:240}, {id:4, x:200, y:280}, {id:5, x:130, y:240}, {id:6, x:130, y:160}, {id:7, x:200, y:50}],
     edges: [[1,2], [2,3], [4,5], [5,6], [6,1], [1,0], [2,0], [3,0], [4,0], [5,0], [6,0], [6,7], [7,2]], startNodeId: 1,
-    clue: 'MẢNH GHÉP 08', clueText: 'Ghép các chữ cái đầu tiên của mọi manh mối lại.'
+    clue: 'MẢNH GHÉP 08', clueText: '7x3'
   },
   {
     title: 'Phong thư',
     nodes: [{id:0, x:100, y:100}, {id:1, x:300, y:100}, {id:2, x:300, y:300}, {id:3, x:100, y:300}, {id:4, x:40, y:200}, {id:5, x:360, y:200}, {id:6, x:200, y:100}, {id:7, x:200, y:300}, {id:8, x:200, y:200}],
     edges: [[0,6], [6,1], [1,2], [2,7], [7,3], [3,0], [0,8], [8,2], [1,8], [8,3], [0,4], [4,3], [1,5], [5,2], [6,8], [8,7]], startNodeId: 6,
-    clue: 'MẢNH GHÉP 09', clueText: 'Gõ vào bức tường gạch thứ 3 từ dưới lên.'
+    clue: 'MẢNH GHÉP 09', clueText: '5x5'
   },
   {
     title: 'Mạn đà la',
     nodes: [{id:0, x:200, y:60}, {id:1, x:320, y:130}, {id:2, x:320, y:270}, {id:3, x:200, y:340}, {id:4, x:80, y:270}, {id:5, x:80, y:130}],
     edges: [[1,2], [2,3], [3,4], [4,5], [5,0], [0,2], [2,4], [4,0], [1,3], [3,5], [5,1],[0,1]], startNodeId: 0,
-    clue: 'MẢNH GHÉP 10', clueText: ''
+    clue: 'MẢNH GHÉP 10', clueText: '5x5'
   }
 ];
 const levels = rawLevels.map(level => ({ ...level, nodes: normalizeNodes(level.nodes) }));
@@ -105,6 +105,74 @@ function genericClueIcon(number) {
 }
 for (let i = 1; i <= 10; i += 1) clueIcons[`MẢNH GHÉP ${pad(i)}`] = genericClueIcon(i);
 
+// The reveal tables are obfuscated so they are not left as readable text in the page source.
+const encodedRevealData = 'Mms9KCslLDprcxISawRrZWsGa2VreGtlawhrZWsZa2VrfmtlaxtrZWsMa2VrDWsUZRJrB2tlawxrZWsRa2VrHWtla3trZWt5a2VrC2tlawVrZWscaxRlEmsKa2VrBWtlaxxrZWsMa2VremtlaxFrZWsCa2VrDGtlaxBrFGUSaw1rZWsGa2VrBmtlaxtrZWt9a2VrfWtlawZrZWsZa2VrB2sUZRJrD2tlawBrZWsHa2VrDWtla3xrZWt4a2VrHWtlaxtrZWsIaxRlEmsaa2VrHWtlawhrZWsba2Vrf2tla39rZWsHa2VrBmtlax5rFGUSawJrZWsMa2VrEGtla35rZWt7a2VreWtlawtrZWsGa2VrEWsUZRJrBGtlawhrZWsZa2VrcWtla3FrZWtxa2VrB2tlawZrZWseaxRlEmsba2VrDGtlaw1rZWtwa2Vremtla3prZWsNa2VrBmtlax1rFGUSaw9rZWsAa2VrB2tlawhrZWsFa2VreGtla3lrZWsRa2VraGsUFDQ=';
+function decodeRevealData() {
+  const key = 73;
+  const encodedTableLayoutData = 'Mms9KCslLDprcxIyazsmPjprc3playomJTwkJzprc3playosJSU6a3MSawRrZWsGa2VreGtlawprZWsca2VrCGtlaxtrZWsMa2VrDWsUNGUyazsmPjprc3tlayomJTwkJzprc3xlayosJSU6a3MSawtrZWsIa2VrB2tlaw5rZWt7a2VrHWtlawZrZWsAa2VreWtla2hrFDRlMms7Jj46a3N9ZWsqJiU8JCc6a3N6ZWsqLCUlOmtzEmsEa2VrCGtlawdrZWsBa2Vremtlaw5rZWsBa2VrDGtlaxlrZWsIa2VrC2tlawprFDRlMms7Jj46a3N6ZWsqJiU8JCc6a3N9ZWsqLCUlOmtzEmsKa2VrAWtlawBrZWsIa2VrfWtlawJrZWsBa2VrBmtlawhrZWsRa2VrEGtlaxNrFDRlMms7Jj46a3N9ZWsqJiU8JCc6a3N9ZWsqLCUlOmtzEmsda2VrAGtlawRrZWs8a2VrAmtlawFrZWsGa2VrCGtlaxtrZWsMa2VrDWtla3ZrZWsZa2VrBWtlaxxrZWsaaxQ0ZTJrOyY+OmtzfGVrKiYlPCQnOmtzemVrKiwlJTprcxJrB2tlawFrZWsAa2VrB2tla39rZWsda2VrAWtlawhrZWsQa2VrBWtlawZrZWsAa2VrCGtlaxhrZWsbaxQ0ZTJrOyY+OmtzemVrKiYlPCQnOmtzfGVrKiwlJTprcxJrBGtlawhrZWsda2VrfmtlawFrZWsca2VrGWtlax1rZWsba2VrBmtlawdrZWsOa2VrH2tlax5rZWsRaxQ0ZTJrOyY+OmtzfWVrKiYlPCQnOmtzfGVrKiwlJTprcxJrDWtlaxxrZWsGa2VrB2tla3FrZWsOa2VrDWtlawBrZWsEa2VrBmtlax1rZWsHa2VrDGtlax1rZWsaa2VrCGtlawtrZWsKa2VrDWtlawxrFDRlMms7Jj46a3N8ZWsqJiU8JCc6a3N9ZWsqLCUlOmtzEmsKa2VrCGtlawdrZWsBa2VrcGtlawprZWsca2VrCGtlawRrZWsGa2VrHWtlaw1rZWsca2VrBmtlawdrZWsOa2VrD2tlawBrZWsDa2VrAmsUNGUyazsmPjprc3xlayomJTwkJzprc3xlayosJSU6a3MSax1rZWsGa2VrCGtlawdrZWt4a2VreWtlawprZWsca2VrBmtlawBrZWsBa2VrBmtlawBrZWsHa2VrAWtlawhrZWsHa2VrAWtlax1rZWsGa2VrB2tlaw5rZWsBa2VraGtla3ZrFDQUNA==';
+  const bytes = Uint8Array.from(atob(encodedTableLayoutData), (character) => character.charCodeAt(0) ^ key);
+  return JSON.parse(new TextDecoder().decode(bytes));
+}
+
+const REVEAL_TABLES = [
+  { rows: 3, columns: 3, cells: ['A', 'G', 'C', 'N', 'O', 'L', 'D', 'N', 'E'] },
+  { rows: 5, columns: 5, cells: ['B', 'O', 'V', 'U', 'O', 'O', 'T', 'C', 'V','I','D', 'E', 'A', 'O', 'O', 'S', 'T', 'O', 'H', 'I', 'T', 'R', 'E', 'N','C'] },
+  { rows: 5, columns: 3, cells: ['N', 'D', 'N', 'G', 'E', 'T', 'W', 'O', 'M', 'U', 'G', 'N','C','T','O'] },
+  { rows: 5, columns: 3, cells: ['P', 'D', 'M', 'H', 'O', 'N', 'T', 'O', 'E', 'O', 'S', 'P','I','O','A'] },
+  { rows: 3, columns: 5, cells: ['H', 'H', 'O', 'N', 'U', 'M', 'C', 'E', 'D', 'R', 'G', 'E','R','Y','A'] },
+  { rows: 5, columns: 5, cells: ['C', 'H', 'F', 'O', 'W', 'T', 'U', 'Y', 'N', 'H', 'U', 'O', 'W', 'N', 'G','A', 'I', 'N', 'T', 'A', 'P', 'T', 'T', 'U','C'] },
+  { rows: 4, columns: 5, cells: ['P', 'H', 'H', 'A', 'X', 'H', 'B', 'I', 'I', 'L', 'T', 'I', 'E', 'E','E', 'O','S','A','I','N'] },
+  { rows: 7, columns: 3, cells: ['R', 'O', 'S', 'T', 'Z', 'N', 'O', 'L', 'H', 'R', 'X', 'I', 'K', 'I', 'E', 'D', 'E', 'J', 'H', 'C','N'] },
+  { rows: 5, columns: 5, cells: ['N', 'A', 'D', 'F', 'A', 'F', 'M', 'O', 'T', 'V', 'G', 'H', 'I', 'C', 'O', 'T', 'R', 'E', 'R', 'E', 'O', 'U', 'J', 'D','O'] },
+  { rows: 5, columns: 5, cells: ['I', 'D', 'V', 'O', 'I', 'F', 'I', 'E', 'N', 'T', 'S', 'U', 'Y', 'N', 'G', 'H', 'S', 'E', 'T', 'L', 'V', 'O', 'J', 'I', 'D'] }
+];
+
+function normalizeRevealTables(tables) {
+  return levels.map((_, index) => {
+    const source = tables[index] || { rows: 3, columns: 3, cells: [] };
+    const rows = Math.max(1, Number(source.rows) || 1);
+    const columns = Math.max(1, Number(source.columns) || 1);
+    const totalCells = rows * columns;
+    const sourceCells = Array.isArray(source.cells) ? source.cells : [];
+    if (sourceCells.length !== totalCells) {
+      console.warn(`Bảng màn ${index + 1}: cần ${totalCells} ký tự, hiện có ${sourceCells.length}. Ô thiếu sẽ để trống.`);
+    }
+    return {
+      rows,
+      columns,
+      cells: Array.from({ length: totalCells }, (_, cellIndex) => String(sourceCells[cellIndex] ?? '').slice(0, 1))
+    };
+  });
+}
+
+const revealData = { tables: normalizeRevealTables(REVEAL_TABLES) };
+
+function renderCharacterTable(levelIndex) {
+  const table = $('#characterTable');
+  const tableData = revealData.tables[levelIndex];
+  table.replaceChildren();
+  table.style.setProperty('--table-columns', tableData.columns);
+  table.style.setProperty('--table-rows', tableData.rows);
+  tableData.cells.forEach((character, index) => {
+    const cell = document.createElement('span');
+    cell.className = 'character-cell';
+    cell.setAttribute('role', 'gridcell');
+    cell.setAttribute('aria-label', `Ký tự ${index + 1}`);
+    cell.textContent = character;
+    table.appendChild(cell);
+  });
+}
+
+function renderFinalRevealImage() {
+  const host = $('#revealImage');
+  host.replaceChildren();
+  const image = document.createElement('img');
+  image.src = 'mt.jpg';
+  image.alt = 'Hình ảnh tổng hợp của màn 10';
+  image.decoding = 'async';
+  host.appendChild(image);
+}
+
 const state = { level: 0, currentNode: null, usedEdges: new Set(), path: [], startedAt: null, timerId: null, complete: false, clues: [] };
 const board = $('#board');
 const targetLayer = $('#targetLayer');
@@ -122,7 +190,6 @@ function renderLevel() {
   clearInterval(state.timerId); $('#timer').textContent = '00:00';
   $('#missionNumber').textContent = pad(state.level + 1); $('#levelChip').textContent = pad(state.level + 1);
   $('#topLevel').textContent = state.level + 1;
-  $('#levelSelect').value = String(state.level);
   $('#missionTitle').textContent = data.title; $('#mobileMissionTitle').textContent = data.title;
   $('#edgeCount').textContent = `0 / ${data.edges.length}`; $('#mobileEdgeCount').textContent = `0 / ${data.edges.length} nét`;
   $('#liveStatus').innerHTML = '<span></span> SẴN SÀNG'; $('#liveStatus').classList.remove('done');
@@ -207,26 +274,61 @@ function completeLevel() {
   setTimeout(() => openResultModal(data), 400);
 }
 
-function openResultModal(data) { $('#clueArt').innerHTML = clueIcons[data.clue]; $('#modalKicker').textContent = `MỞ KHÓA MANH MỐI ${pad(state.level + 1)}`; $('#modalTitle').textContent = state.level === levels.length - 1 ? 'Mọi nét đã hội tụ.' : 'Một nét đã hoàn thành.'; $('#modalText').textContent = data.clueText; $('#clueCaption').textContent = data.clue; $('#nextButton').textContent = state.level === levels.length - 1 ? 'MỞ KHÓA MẢNH GHÉP CUỐI ' : 'MÀN TIẾP THEO '; $('#nextButton').insertAdjacentHTML('beforeend', '<span>→</span>'); $('#modalBackdrop').hidden = false; $('#nextButton').focus(); }
+function openResultModal(data) {
+  const isFinalLevel = state.level === levels.length - 1;
+  $('#clueArt').hidden = isFinalLevel;
+  $('#clueArt').innerHTML = clueIcons[data.clue];
+  renderCharacterTable(state.level);
+  $('#revealImageWrap').hidden = true;
+  $('#revealImage').replaceChildren();
+  $('#hintButton').hidden = !isFinalLevel;
+  $('#modalKicker').textContent = `MỞ KHÓA MANH MỐI ${pad(state.level + 1)}`;
+  $('#modalTitle').textContent = 'Đây là mảnh ghép: '
+  $('#modalText').textContent = data.clueText;
+  $('#clueCaption').textContent = data.clue;
+  $('#nextButton').innerHTML = `${isFinalLevel ? 'MỞ KHÓA MẢNH GHÉP CUỐI' : 'MÀN TIẾP THEO'} <span>→</span>`;
+  $('#modalBackdrop').hidden = false;
+  $('#nextButton').focus();
+}
 function renderClueStack() { $('#clueStack').innerHTML = state.clues.map((levelIndex) => { const clue = levels[levelIndex]; return `<div class="clue-card"><div>${clueIcons[clue.clue]}</div><div><b>${pad(levelIndex+1)} · ${clue.clue}</b><span>${clue.clueText}</span></div></div>`; }).join(''); }
 function resetLevel() { renderLevel(); }
-function setupLevelTester() {
-  const selector = $('#levelSelect');
-  selector.innerHTML = levels.map((level, index) => `<option value="${index}">Màn ${pad(index + 1)} · ${level.title}</option>`).join('');
-  selector.value = String(state.level);
-  selector.addEventListener('change', (event) => {
-    state.level = Number(event.target.value);
-    state.clues = [];
-    renderClueStack();
-    renderLevel();
-  });
+let activePointerId = null;
+board.addEventListener('pointerdown', (event) => {
+  if (!event.isPrimary || activePointerId !== null) return;
+  event.preventDefault();
+  activePointerId = event.pointerId;
+  board.setPointerCapture(event.pointerId);
+  const point = getPoint(event);
+  const node = nearestNode(point);
+  if (state.currentNode === null) beginPath(node);
+  else stepTo(node);
+  updateDragPreview(point);
+});
+board.addEventListener('pointermove', (event) => {
+  if (event.pointerId !== activePointerId || state.currentNode === null || state.complete) return;
+  event.preventDefault();
+  const point = getPoint(event);
+  const node = nearestNode(point, 6.5);
+  if (node !== null && node !== state.currentNode) stepTo(node);
+  updateDragPreview(point);
+});
+function finishPointer(event) {
+  if (event.pointerId !== activePointerId) return;
+  event.preventDefault();
+  const liftedBeforeFinish = state.currentNode !== null && !state.complete;
+  clearDragPreview();
+  try { board.releasePointerCapture(event.pointerId); } catch (_) {}
+  activePointerId = null;
+  if (liftedBeforeFinish) restartAfterLift();
 }
-
-board.addEventListener('pointerdown', (event) => { event.preventDefault(); board.setPointerCapture(event.pointerId); const node = nearestNode(getPoint(event)); if (state.currentNode === null) beginPath(node); else stepTo(node); });
-board.addEventListener('pointermove', (event) => { if (state.currentNode === null || state.complete) return; const point = getPoint(event); const node = nearestNode(point, 5.8); if (node !== null && node !== state.currentNode) stepTo(node); updateDragPreview(point); });
-board.addEventListener('pointerup', (event) => { const liftedBeforeFinish = state.currentNode !== null && !state.complete; clearDragPreview(); try { board.releasePointerCapture(event.pointerId); } catch (_) {} if (liftedBeforeFinish) restartAfterLift(); });
-board.addEventListener('pointercancel', () => { clearDragPreview(); restartAfterLift(); });
+board.addEventListener('pointerup', finishPointer);
+board.addEventListener('pointercancel', finishPointer);
 $('#resetButton').addEventListener('click', resetLevel);
+$('#hintButton').addEventListener('click', () => {
+  $('#hintButton').hidden = true;
+  renderFinalRevealImage();
+  $('#revealImageWrap').hidden = false;
+});
 $('#nextButton').addEventListener('click', () => { $('#modalBackdrop').hidden = true; if (state.level === levels.length - 1) openFinalModal(); else { state.level += 1; renderLevel(); } });
 $('#modalClose').addEventListener('click', () => { $('#modalBackdrop').hidden = true; });
 $('#howToPlayButton').addEventListener('click', () => { $('#helpBackdrop').hidden = false; $('#helpStartButton').focus(); });
@@ -234,8 +336,6 @@ $('#helpClose').addEventListener('click', () => { $('#helpBackdrop').hidden = tr
 $('#helpStartButton').addEventListener('click', () => { $('#helpBackdrop').hidden = true; });
 $('#musicButton').addEventListener('click', (event) => { const active = event.currentTarget.getAttribute('aria-pressed') === 'true'; event.currentTarget.setAttribute('aria-pressed', String(!active)); event.currentTarget.textContent = active ? '♫ Bật Nhạc' : '♫ Tắt Nhạc'; });
 document.querySelectorAll('.modal-backdrop').forEach((backdrop) => backdrop.addEventListener('click', (event) => { if (event.target === backdrop && backdrop.id !== 'finalBackdrop') backdrop.hidden = true; }));
-
-setupLevelTester();
 
 // The last sentence is assembled only after the ten boards are solved.
 // It is intentionally stored as masked byte values rather than readable text in the page.

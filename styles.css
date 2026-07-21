@@ -9,26 +9,39 @@
   --red: #ef5146;
   --gray-line: #dfe2e6;
   --font: Arial, Helvetica, sans-serif;
+  /* Đặt ảnh nền vào thư mục dự án với tên background.jpg hoặc đổi đường dẫn này. */
+  /* --program-background: url("hc-01.png"); */
 }
 
 * { box-sizing: border-box; }
+button, svg, .board-wrap, .board-wrap * {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
   min-width: 320px;
-  background: var(--page);
+  background-color: var(--page);
+  background-image: linear-gradient(rgba(241, 241, 241, .52), rgba(241, 241, 241, .52)), var(--program-background);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font);
 }
 button { font: inherit; }
-.grain { display: none; }
+.grain { display: none;}
 
 .app-shell {
   width: min(100%, 600px);
   min-height: 100vh;
   margin: 0 auto;
   padding: 17px 20px 30px;
-  background: var(--card);
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
   border-radius: 0 0 10px 10px;
   box-shadow: 0 0 8px rgba(30, 43, 55, .16);
 }
@@ -110,6 +123,8 @@ button { font: inherit; }
   aspect-ratio: 1 / 1;
   position: relative;
   overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: contain;
   background: #fff;
   border: 3px solid var(--border);
   border-radius: 8px;
@@ -148,9 +163,8 @@ button { font: inherit; }
 }
 .game-card-foot p { margin: 0; color: var(--muted); font-size: 12px; }
 .foot-actions { display: flex; align-items: center; gap: 12px; }
-.level-tester { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 10px; font-weight: 700; white-space: nowrap; }
-.level-tester select { max-width: 150px; padding: 5px 22px 5px 6px; color: var(--ink); background: #f4f7f8; border: 1px solid var(--soft-border); border-radius: 4px; font-size: 10px; cursor: pointer; }
 .reset-button { border: 0; padding: 4px 0; color: var(--muted); background: transparent; cursor: pointer; font-size: 11px; }
+.reset-button, .primary-button, .music-button, .icon-button { touch-action: manipulation; }
 .reset-button:hover { color: var(--red); }
 .reset-button span { font-size: 16px; margin-right: 3px; vertical-align: -1px; }
 .mobile-mission { display: none; }
@@ -170,6 +184,8 @@ button { font: inherit; }
 .modal {
   position: relative;
   width: min(100%, 390px);
+  max-height: calc(100vh - 36px);
+  overflow-y: auto;
   padding: 28px 28px 30px;
   text-align: center;
   background: #fff;
@@ -182,6 +198,46 @@ button { font: inherit; }
 .modal-kicker { color: var(--purple); font-size: 11px; font-weight: 700; }
 .clue-art { width: 120px; height: 120px; margin: 20px auto 16px; background: #fafafa; border: 1px solid var(--soft-border); }
 .clue-art svg { width: 100%; height: 100%; }
+.reveal-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 14px auto 18px;
+}
+.character-table {
+  display: grid;
+  grid-template-columns: repeat(var(--table-columns), minmax(26px, 38px));
+  grid-template-rows: repeat(var(--table-rows), minmax(26px, 38px));
+  gap: 4px;
+  padding: 5px;
+  background: #f4f7f8;
+  border: 1px solid var(--soft-border);
+  border-radius: 5px;
+}
+.character-cell {
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid #bac4cb;
+  border-radius: 3px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: inset 0 -2px 0 rgba(33, 61, 87, .06);
+}
+.reveal-image-wrap[hidden] { display: none; }
+.reveal-image {
+  width: min(100%, 330px);
+  max-height: 220px;
+  overflow: hidden;
+  background: #101a29;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+.reveal-image img { display: block; width: 100%; height: auto; max-height: 218px; object-fit: contain; }
 .modal h2 { margin: 0 0 10px; color: var(--ink); font-size: 23px; }
 .modal p { max-width: 290px; margin: 0 auto; color: var(--muted); font-size: 13px; line-height: 1.6; }
 .clue-caption { display: flex; align-items: center; gap: 8px; margin: 20px 0; color: var(--muted); font-size: 10px; font-weight: 700; }
@@ -189,6 +245,20 @@ button { font: inherit; }
 .primary-button { width: 100%; padding: 12px 14px; border: 0; border-radius: 4px; color: #fff; background: var(--purple); font-size: 12px; font-weight: 700; cursor: pointer; }
 .primary-button:hover { background: #73359a; transform: none; }
 .primary-button span { margin-left: 7px; font-size: 16px; vertical-align: -1px; }
+.secondary-button {
+  width: 100%;
+  margin: -4px 0 16px;
+  padding: 10px 14px;
+  border: 1px solid var(--purple);
+  border-radius: 4px;
+  color: var(--purple);
+  background: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.secondary-button:hover { color: #fff; background: var(--purple); }
 .help-icon { width: 58px; height: 58px; margin: 20px auto; border: 1px solid var(--purple); border-radius: 50%; color: var(--purple); display: grid; place-items: center; font-size: 25px; }
 .help-modal p { max-width: 300px; }
 .help-modal .primary-button { margin-top: 22px; }
@@ -222,4 +292,9 @@ button { font: inherit; }
 @media (max-width: 390px) {
   .music-button { padding: 8px 10px; font-size: 12px; }
   .progress-badge { font-size: 11px; }
+  .reveal-layout { gap: 8px; }
+  .character-table { grid-template-columns: repeat(var(--table-columns), minmax(23px, 34px)); grid-template-rows: repeat(var(--table-rows), minmax(23px, 34px)); gap: 3px; }
+  .character-cell { font-size: 15px; }
+  .reveal-image { max-height: 190px; }
+  .reveal-image img { max-height: 188px; }
 }

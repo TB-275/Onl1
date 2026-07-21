@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#11110f" />
     <meta name="description" content="Mê Cung Một Nét — hoàn thành 10 hình bằng một nét duy nhất." />
-    <title>Mê Cung Một Nét</title>
+    <title>Hành trình TCL "TỌA ĐỘ ĐỎ 2026"</title>
+    <link rel="icon" type="image/x-icon" href="hc-01.png">
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
     <main class="app-shell">
       <header class="topbar">
-        <button class="music-button" id="musicButton" type="button" aria-pressed="false">♫ Bật Nhạc</button>
+        <button class="music-button" id="musicButton" type="button" aria-pressed="false">HÀNH TRÌNH "TỌA ĐỘ ĐỎ 2026"</button>
         <div class="topbar-actions">
           <div class="progress-badge">Màn: <span id="topLevel">1</span>/10 Mở Khóa Manh Mối</div>
           <button class="icon-button" id="howToPlayButton" type="button" aria-label="Cách chơi" title="Cách chơi">?</button>
@@ -63,7 +64,6 @@
             <div class="game-card-foot">
               <p id="instruction">Nối liền từng điểm mà không nhấc tay.</p>
               <div class="foot-actions">
-                <label class="level-tester" for="levelSelect"><span>TEST MÀN</span><select id="levelSelect" aria-label="Chọn màn để kiểm tra"></select></label>
                 <button class="reset-button" id="resetButton" type="button"><span>↻</span> XÓA NÉT</button>
               </div>
             </div>
@@ -86,6 +86,13 @@
         <button class="modal-close" id="modalClose" type="button" aria-label="Đóng">×</button>
         <div class="modal-kicker" id="modalKicker">MỞ KHÓA MANH MỐI 01</div>
         <div class="clue-art" id="clueArt"></div>
+        <div class="reveal-layout" id="revealLayout">
+          <div class="character-table" id="characterTable" role="grid" aria-label="Bảng ký tự được mở khóa"></div>
+          <div class="reveal-image-wrap" id="revealImageWrap" hidden>
+            <div class="reveal-image" id="revealImage" aria-label="Hình minh họa manh mối cuối cùng"></div>
+          </div>
+        </div>
+        <button class="secondary-button" id="hintButton" type="button" hidden>GỢI Ý</button>
         <h2 id="modalTitle">Một nét đã hoàn thành.</h2>
         <p id="modalText">Bạn vừa mở khóa một mảnh ghép.</p>
         <div class="clue-caption"><span></span><strong id="clueCaption">MẢNH GHÉP 01</strong><span></span></div>
