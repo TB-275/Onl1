@@ -121,10 +121,10 @@ const REVEAL_TABLES = [
   { rows: 5, columns: 3, cells: ['N', 'D', 'N', 'G', 'E', 'T', 'W', 'O', 'M', 'U', 'G', 'N','C','T','O'] },
   { rows: 5, columns: 3, cells: ['P', 'D', 'M', 'H', 'O', 'N', 'G', 'O', 'E', 'O', 'S', 'P','I','O','A'] },
   { rows: 3, columns: 5, cells: ['H', 'H', 'O', 'N', 'U', 'M', 'C', 'E', 'D', 'R', 'V', 'E','R','Y','A'] },
-  { rows: 5, columns: 5, cells: ['C', 'H', 'D', 'O', 'W', 'T', 'U', 'Y', 'N', 'H', 'U', 'O', 'W', 'N', 'G','A', 'I', 'N', 'T', 'A', 'P', 'T', 'T', 'U','C'] },
+  { rows: 5, columns: 5, cells: ['N', 'A', 'D', 'F', 'A', 'F', 'M', 'O', 'T', 'V', 'G', 'H', 'I', 'C', 'O', 'T', 'R', 'E', 'R', 'E', 'O', 'U', 'T', 'D','O'] },
   { rows: 4, columns: 5, cells: ['P', 'H', 'H', 'A', 'X', 'H', 'B', 'I', 'I', 'L', 'H', 'I', 'E', 'E','E', 'O','S','A','I','N'] },
   { rows: 7, columns: 3, cells: ['R', 'O', 'S', 'T', 'Z', 'N', 'O', 'T', 'H', 'R', 'X', 'I', 'K', 'I', 'E', 'D', 'E', 'J', 'H', 'C','N'] },
-  { rows: 5, columns: 5, cells: ['N', 'A', 'D', 'F', 'A', 'F', 'M', 'O', 'T', 'V', 'G', 'H', 'I', 'C', 'O', 'T', 'R', 'E', 'R', 'E', 'O', 'U', 'T', 'D','O'] },
+  { rows: 5, columns: 5, cells: ['C', 'H', 'D', 'O', 'W', 'T', 'U', 'Y', 'N', 'H', 'U', 'O', 'W', 'N', 'G','A', 'I', 'N', 'T', 'A', 'P', 'T', 'T', 'U','C'] },
   { rows: 5, columns: 5, cells: ['I', 'D', 'T', 'O', 'I', 'F', 'I', 'E', 'N', 'T', 'S', 'U', 'Y', 'N', 'G', 'H', 'S', 'E', 'T', 'L', 'V', 'O', 'J', 'I', 'D'] }
 ];
 
