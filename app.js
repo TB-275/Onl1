@@ -55,10 +55,11 @@ const rawLevels = [
     clue: 'MẢNH GHÉP 05', clueText: '3x5'
   },
   {
-    title: 'Mạng nhện',
-    nodes: [{id:0, x:200, y:200}, {id:1, x:200, y:120}, {id:2, x:280, y:200}, {id:3, x:200, y:280}, {id:4, x:120, y:200}, {id:5, x:200, y:50}, {id:6, x:350, y:200}, {id:7, x:200, y:350}, {id:8, x:50, y:200}],
-    edges: [[1,2], [2,3], [3,4], [4,1], [5,8], [6,7], [7,8], [5,1], [1,0], [0,3], [3,7], [8,4], [4,0], [0,2], [2,6]], startNodeId: 7,
+    title: 'Phong thư',
+    nodes: [{id:0, x:100, y:100}, {id:1, x:300, y:100}, {id:2, x:300, y:300}, {id:3, x:100, y:300}, {id:4, x:40, y:200}, {id:5, x:360, y:200}, {id:6, x:200, y:100}, {id:7, x:200, y:300}, {id:8, x:200, y:200}],
+    edges: [[0,6], [6,1], [1,2], [2,7], [7,3], [3,0], [0,8], [8,2], [1,8], [8,3], [0,4], [4,3], [1,5], [5,2], [6,8], [8,7]], startNodeId: 6,
     clue: 'MẢNH GHÉP 06', clueText: '5x5'
+   
   },
   {
     title: 'Bẫy kim cương',
@@ -73,9 +74,9 @@ const rawLevels = [
     clue: 'MẢNH GHÉP 08', clueText: '7x3'
   },
   {
-    title: 'Phong thư',
-    nodes: [{id:0, x:100, y:100}, {id:1, x:300, y:100}, {id:2, x:300, y:300}, {id:3, x:100, y:300}, {id:4, x:40, y:200}, {id:5, x:360, y:200}, {id:6, x:200, y:100}, {id:7, x:200, y:300}, {id:8, x:200, y:200}],
-    edges: [[0,6], [6,1], [1,2], [2,7], [7,3], [3,0], [0,8], [8,2], [1,8], [8,3], [0,4], [4,3], [1,5], [5,2], [6,8], [8,7]], startNodeId: 6,
+     title: 'Mạng nhện',
+    nodes: [{id:0, x:200, y:200}, {id:1, x:200, y:120}, {id:2, x:280, y:200}, {id:3, x:200, y:280}, {id:4, x:120, y:200}, {id:5, x:200, y:50}, {id:6, x:350, y:200}, {id:7, x:200, y:350}, {id:8, x:50, y:200}],
+    edges: [[1,2], [2,3], [3,4], [4,1], [5,8], [6,7], [7,8], [5,1], [1,0], [0,3], [3,7], [8,4], [4,0], [0,2], [2,6]], startNodeId: 7,
     clue: 'MẢNH GHÉP 09', clueText: '5x5'
   },
   {
@@ -115,16 +116,16 @@ function decodeRevealData() {
 }
 
 const REVEAL_TABLES = [
-  { rows: 3, columns: 3, cells: ['A', 'G', 'C', 'N', 'O', 'L', 'D', 'N', 'E'] },
+  { rows: 3, columns: 3, cells: ['A', 'L', 'C', 'N', 'O', 'L', 'D', 'N', 'E'] },
   { rows: 5, columns: 5, cells: ['B', 'O', 'V', 'U', 'O', 'O', 'T', 'C', 'V','I','D', 'E', 'A', 'O', 'O', 'S', 'T', 'O', 'H', 'I', 'T', 'R', 'E', 'N','C'] },
   { rows: 5, columns: 3, cells: ['N', 'D', 'N', 'G', 'E', 'T', 'W', 'O', 'M', 'U', 'G', 'N','C','T','O'] },
-  { rows: 5, columns: 3, cells: ['P', 'D', 'M', 'H', 'O', 'N', 'T', 'O', 'E', 'O', 'S', 'P','I','O','A'] },
-  { rows: 3, columns: 5, cells: ['H', 'H', 'O', 'N', 'U', 'M', 'C', 'E', 'D', 'R', 'G', 'E','R','Y','A'] },
-  { rows: 5, columns: 5, cells: ['C', 'H', 'F', 'O', 'W', 'T', 'U', 'Y', 'N', 'H', 'U', 'O', 'W', 'N', 'G','A', 'I', 'N', 'T', 'A', 'P', 'T', 'T', 'U','C'] },
-  { rows: 4, columns: 5, cells: ['P', 'H', 'H', 'A', 'X', 'H', 'B', 'I', 'I', 'L', 'T', 'I', 'E', 'E','E', 'O','S','A','I','N'] },
-  { rows: 7, columns: 3, cells: ['R', 'O', 'S', 'T', 'Z', 'N', 'O', 'L', 'H', 'R', 'X', 'I', 'K', 'I', 'E', 'D', 'E', 'J', 'H', 'C','N'] },
-  { rows: 5, columns: 5, cells: ['N', 'A', 'D', 'F', 'A', 'F', 'M', 'O', 'T', 'V', 'G', 'H', 'I', 'C', 'O', 'T', 'R', 'E', 'R', 'E', 'O', 'U', 'J', 'D','O'] },
-  { rows: 5, columns: 5, cells: ['I', 'D', 'V', 'O', 'I', 'F', 'I', 'E', 'N', 'T', 'S', 'U', 'Y', 'N', 'G', 'H', 'S', 'E', 'T', 'L', 'V', 'O', 'J', 'I', 'D'] }
+  { rows: 5, columns: 3, cells: ['P', 'D', 'M', 'H', 'O', 'N', 'G', 'O', 'E', 'O', 'S', 'P','I','O','A'] },
+  { rows: 3, columns: 5, cells: ['H', 'H', 'O', 'N', 'U', 'M', 'C', 'E', 'D', 'R', 'V', 'E','R','Y','A'] },
+  { rows: 5, columns: 5, cells: ['C', 'H', 'D', 'O', 'W', 'T', 'U', 'Y', 'N', 'H', 'U', 'O', 'W', 'N', 'G','A', 'I', 'N', 'T', 'A', 'P', 'T', 'T', 'U','C'] },
+  { rows: 4, columns: 5, cells: ['P', 'H', 'H', 'A', 'X', 'H', 'B', 'I', 'I', 'L', 'H', 'I', 'E', 'E','E', 'O','S','A','I','N'] },
+  { rows: 7, columns: 3, cells: ['R', 'O', 'S', 'T', 'Z', 'N', 'O', 'T', 'H', 'R', 'X', 'I', 'K', 'I', 'E', 'D', 'E', 'J', 'H', 'C','N'] },
+  { rows: 5, columns: 5, cells: ['N', 'A', 'D', 'F', 'A', 'F', 'M', 'O', 'T', 'V', 'G', 'H', 'I', 'C', 'O', 'T', 'R', 'E', 'R', 'E', 'O', 'U', 'T', 'D','O'] },
+  { rows: 5, columns: 5, cells: ['I', 'D', 'T', 'O', 'I', 'F', 'I', 'E', 'N', 'T', 'S', 'U', 'Y', 'N', 'G', 'H', 'S', 'E', 'T', 'L', 'V', 'O', 'J', 'I', 'D'] }
 ];
 
 function normalizeRevealTables(tables) {
