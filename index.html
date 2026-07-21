@@ -13,7 +13,7 @@
     <div class="grain" aria-hidden="true"></div>
     <main class="app-shell">
       <header class="topbar">
-        <button class="music-button" id="musicButton" type="button" aria-pressed="false">HÀNH TRÌNH "TỌA ĐỘ ĐỎ 2026"</button>
+        <button class="music-button" id="musicButton" type="button" aria-pressed="false">♫ Bật Nhạc</button>
         <div class="topbar-actions">
           <div class="progress-badge">Màn: <span id="topLevel">1</span>/10 Mở Khóa Manh Mối</div>
           <button class="icon-button" id="howToPlayButton" type="button" aria-label="Cách chơi" title="Cách chơi">?</button>
@@ -80,6 +80,7 @@
 
       <footer class="footer"><span>© 2026 MÊ CUNG MỘT NÉT</span><span class="footer-line"></span><span>HÃY TIN VÀO NÉT ĐẦU TIÊN</span></footer>
     </main>
+    <audio id="musicAudio" src="nhac.mp3" loop preload="metadata"></audio>
 
     <div class="modal-backdrop" id="modalBackdrop" hidden>
       <section class="modal" id="resultModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">

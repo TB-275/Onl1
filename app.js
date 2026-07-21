@@ -335,7 +335,25 @@ $('#modalClose').addEventListener('click', () => { $('#modalBackdrop').hidden = 
 $('#howToPlayButton').addEventListener('click', () => { $('#helpBackdrop').hidden = false; $('#helpStartButton').focus(); });
 $('#helpClose').addEventListener('click', () => { $('#helpBackdrop').hidden = true; });
 $('#helpStartButton').addEventListener('click', () => { $('#helpBackdrop').hidden = true; });
-$('#musicButton').addEventListener('click', (event) => { const active = event.currentTarget.getAttribute('aria-pressed') === 'true'; event.currentTarget.setAttribute('aria-pressed', String(!active)); event.currentTarget.textContent = active ? '♫ Bật Nhạc' : '♫ Tắt Nhạc'; });
+const musicButton = $('#musicButton');
+const musicAudio = $('#musicAudio');
+musicAudio.volume = 0.35;
+musicButton.addEventListener('click', async () => {
+  if (musicAudio.paused) {
+    try {
+      await musicAudio.play();
+      musicButton.setAttribute('aria-pressed', 'true');
+      musicButton.textContent = '♫ Tắt Nhạc';
+    } catch (_) {
+      musicButton.setAttribute('aria-pressed', 'false');
+      musicButton.textContent = '♫ Bật Nhạc';
+    }
+  } else {
+    musicAudio.pause();
+    musicButton.setAttribute('aria-pressed', 'false');
+    musicButton.textContent = '♫ Bật Nhạc';
+  }
+});
 document.querySelectorAll('.modal-backdrop').forEach((backdrop) => backdrop.addEventListener('click', (event) => { if (event.target === backdrop && backdrop.id !== 'finalBackdrop') backdrop.hidden = true; }));
 
 // The last sentence is assembled only after the ten boards are solved.
